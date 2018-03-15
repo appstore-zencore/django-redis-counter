@@ -11,4 +11,5 @@ script:
     - cd ..
     - pip install .
     - cd src
+    - python manage.py migrate
     - python manage.py drc-dump
