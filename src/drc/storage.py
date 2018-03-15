@@ -14,12 +14,6 @@ class Storage(object):
         self.config = config
         self.connections = {}
 
-    @property
-    def names(self):
-        ns = list(self.config.keys())
-        ns.sort()
-        return ns
-
     def make_connection(self, connection_config):
         url = connection_config["url"]
         options = {
@@ -61,20 +55,11 @@ class Storage(object):
         else:
             self.connections = {}
 
-    def get_items(self, using="default"):
-        items = []
+    def dump(self, using="default"):
         connection = self.get_connection(using)
         for item_key in connection.keys(self.prefix + ":*"):
-            try:
-                value = int(connection.get(item_key))
-                _, model, key = item_key.split(":")
-                items.append({
-                    "model": model,
-                    "key": key,
-                    "value": value,
-                })
-            except:
-                logger.exception("Parse item failed: key={}.".format(item_key))
-        return items
+            value = int(connection.get(item_key))
+            _, model, key = item_key.split(":")
+
 
 connections = Storage(DRC_PREFIX, DRC_CONNECTIONS)
