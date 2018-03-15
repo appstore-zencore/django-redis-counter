@@ -28,7 +28,7 @@ Usage
         ...
     ]
 
-1. Define counter models in app's models.py.
+2. Define counter models in app's models.py.
 
 ::
 
@@ -41,7 +41,7 @@ Usage
     class PageCounter(Counter):
         pass
 
-1. Call incr in views.
+3. Call incr in views.
 
 ::
 
@@ -53,7 +53,7 @@ Usage
             "page_visit_number": page_visit_number,
         })
 
-1. Create a script to dump cached data to database. Name the script to page_counter_dump.sh or what ever you like.
+4. Create a script to dump cached data to database. Name the script to page_counter_dump.sh or what ever you like.
 
 ::
 
@@ -61,7 +61,7 @@ Usage
     cd /your/project/path
     python manage.py rdc-dump
 
-1. Add dump task as schedule job, e.g. crontab job.
+5. Add dump task as schedule job, e.g. crontab job.
 
 ::
 
