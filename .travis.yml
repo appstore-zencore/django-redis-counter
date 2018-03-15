@@ -11,4 +11,4 @@ script:
     - cd ..
     - pip install .
     - cd src
-    - python manage.py rdc-dump
+    - python manage.py drc-dump
