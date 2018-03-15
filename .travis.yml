@@ -10,3 +10,5 @@ script:
     - python manage.py test
     - cd ..
     - pip install .
+    - cd src
+    - python manage.py rdc-dump
