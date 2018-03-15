@@ -7,6 +7,8 @@ Django application that keeps content visit count in redis first, and dump to da
 Install
 -------
 
+::
+
     pip install django-redis-counter
 
 Dependencies
