@@ -12,8 +12,8 @@ Install
 Dependencies
 ------------
 
-1. django
-1. redis
+- django
+- redis
 
 Usage
 -----
