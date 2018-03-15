@@ -11,12 +11,25 @@ class Counter(models.Model):
         abstract = True
 
     @classmethod
-    def incr(cls, content, using="default"):
+    def get_content_pk(cls, content):
         if isinstance(content, models.Model):
-            content = content.pk
+            return content.pk
+        return int(content)
+
+    @classmethod
+    def incr(cls, content, using="default"):
+        content = cls.get_content_pk(content)
         delta = connections.incr(cls, content, using=using)
         counter, created = cls.objects.get_or_create(content=content)
         return counter.count + delta
 
-        # cls.objects.filter(pk=counter.pk).update(count=F("count") + value)
+    @classmethod
+    def update(cls, content, delta):
+        content = cls.get_content_pk(content)
+        counter, created = cls.objects.get_or_create(content=content)
+        if created:
+            counter.count = delta
+            counter.save()
+        else:
+            cls.objects.filter(pk=counter.pk).update(count=F("count") + delta)
 
