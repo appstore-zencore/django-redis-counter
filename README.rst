@@ -56,6 +56,7 @@ Usage
 1. Create a script to dump cached data to database. Name the script to page_counter_dump.sh or what ever you like.
 
 ::
+
     #!/bin/bash
     cd /your/project/path
     python manage.py rdc-dump
@@ -63,6 +64,7 @@ Usage
 1. Add dump task as schedule job, e.g. crontab job.
 
 ::
+
     * * * * * page_counter_dump.sh # dump the cached data every minutes
     1 * * * * page_counter_dump.sh # dump the cached data every hour.
 
