@@ -1,4 +1,5 @@
 import json
+import redis
 from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
@@ -8,6 +9,8 @@ from .models import PageCounter
 class TestDrc(TestCase):
 
     def setUp(self):
+        db = redis.Redis()
+        db.flushall()
         self.p1 = Page()
         self.p1.title = "t1"
         self.p1.save()
@@ -21,4 +24,3 @@ class TestDrc(TestCase):
             assert data["id"] == self.p1.pk
             assert data["title"] == self.p1.title
             assert data["count"] == i+1
-        
