@@ -15,7 +15,7 @@ requires = [
 
 setup(
     name="django-redis-counter",
-    version="0.1.0",
+    version="0.1.1",
     description="Django application that keeps content visit count in redis first, then dump to database via extra job.",
     long_description=long_description,
     url="https://github.com/appstore-zencore/django-redis-counter",

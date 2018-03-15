@@ -61,7 +61,7 @@ Usage
 
     #!/bin/bash
     cd /your/project/path
-    python manage.py rdc-dump
+    python manage.py drc-dump
 
 5. Add dump task as schedule job, e.g. crontab job.
 
